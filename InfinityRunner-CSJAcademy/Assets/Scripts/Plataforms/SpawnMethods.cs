@@ -11,7 +11,8 @@ public static class SpawnMethods
     private static int _plataformIndex;
     private const float Distance = 30.0f;
     private const float TriggerDistance = 3f;
-    private static float _offSet;
+    private static float _xOffSet;
+    private static float _yOffSet;
 
     #endregion
 
@@ -20,18 +21,19 @@ public static class SpawnMethods
         _currentPlataforms.Clear();
         _plataformIndex = 0;
         _previousPlataform = null;
-        _offSet = 0;
+        _xOffSet = 0;
+        _yOffSet = -4.0F;
 
         for (int i = 0; i < plataforms.Count; i++)
         {
             Transform plataform = Object.Instantiate(
                 plataforms[i],
-                new Vector2(_offSet, 0),
+                new Vector2(_xOffSet, _yOffSet),
                 rotation
             ).transform;
 
             _currentPlataforms.Add(plataform);
-            _offSet += Distance;
+            _xOffSet += Distance;
         }
 
         SetCurrentPoint();
@@ -70,7 +72,7 @@ public static class SpawnMethods
 
     public static void Recycle(Transform plataform)
     {
-        plataform.transform.position = new Vector2(_offSet, 0);
-        _offSet += Distance;
+        plataform.transform.position = new Vector2(_xOffSet, 0);
+        _xOffSet += Distance;
     }
 }
