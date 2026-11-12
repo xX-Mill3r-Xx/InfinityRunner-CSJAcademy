@@ -3,22 +3,20 @@ using UnityEngine.InputSystem;
 
 public static class PlayerInputs
 {
-    public static void InputsMoviment(Rigidbody2D rig, float jumpForce)
+    public static bool JumpPressed()
     {
-        bool jumpPressed = false;
-
         if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
-            jumpPressed = true;
+            return true;
 
         if (Gamepad.current != null && Gamepad.current.buttonSouth.wasPressedThisFrame)
-            jumpPressed = true;
+            return true;
 
-        if (jumpPressed)
-            AddJumpForce(rig, jumpForce);
+        return false;
     }
 
-    private static void AddJumpForce(Rigidbody2D rig, float jumpForce)
+    public static void ApplyJumpForce(Rigidbody2D rig, float jumpForce)
     {
+        rig.linearVelocity = new Vector2(rig.linearVelocity.x, 0f);
         rig.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
     }
 }
