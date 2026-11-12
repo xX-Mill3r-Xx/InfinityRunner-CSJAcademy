@@ -72,7 +72,7 @@ public static class SpawnMethods
 
     public static void Recycle(Transform plataform)
     {
-        plataform.transform.position = new Vector2(_xOffSet, 0);
+        plataform.transform.position = new Vector2(_xOffSet, _yOffSet);
         _xOffSet += Distance;
     }
 }
