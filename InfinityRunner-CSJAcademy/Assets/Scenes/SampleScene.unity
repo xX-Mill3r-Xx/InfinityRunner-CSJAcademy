@@ -165,7 +165,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SpawnEnemies
   _enimiesList:
   - {fileID: 8725458170550776887, guid: 8fa6c9c262e1676438fae92defe591b5, type: 3}
+  - {fileID: 8725458170550776887, guid: 67bf86cd926293743be0189e73696b70, type: 3}
   _spawnTime: 2
+  _spawnPosition: {x: 15, y: 0}
 --- !u!1 &274764529
 GameObject:
   m_ObjectHideFlags: 0

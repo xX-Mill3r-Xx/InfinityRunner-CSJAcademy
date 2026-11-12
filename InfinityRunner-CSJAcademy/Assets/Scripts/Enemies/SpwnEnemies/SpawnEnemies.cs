@@ -1,17 +1,13 @@
-using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnEnemies : MonoBehaviour
 {
-    #region Properties
-
+    [Header("Configurações")]
     [SerializeField] private List<GameObject> _enimiesList = new List<GameObject>();
     [SerializeField] private float _spawnTime;
 
     private float _timerCount;
-
-    #endregion
 
     void Start()
     {
@@ -25,13 +21,17 @@ public class SpawnEnemies : MonoBehaviour
 
     void SpawnEnemy()
     {
-        Instantiate(
-            _enimiesList[0],
-            transform.position + new Vector3(
-                0,
-                Random.Range(1.0f, 3.0f),
-                0),
-            transform.rotation);
+        if (_enimiesList.Count == 0) return;
+
+        int randomIndex = Random.Range(0, _enimiesList.Count);
+        GameObject enemyToSpawn = _enimiesList[randomIndex];
+
+        Vector3 spawnPos = new Vector3(
+            transform.position.x,
+            transform.position.y + Random.Range(1.0f, 3.0f),
+            0f);
+
+        Instantiate(enemyToSpawn, spawnPos, transform.rotation);
     }
 
     public void SpawnCronometrer()
