@@ -19,6 +19,7 @@ public class SpawnPlataforms : MonoBehaviour
     void Update()
     {
         SpawnMethods.LoopMovePlataforms(_player);
+
     }
 
     private void ConfigStart()
