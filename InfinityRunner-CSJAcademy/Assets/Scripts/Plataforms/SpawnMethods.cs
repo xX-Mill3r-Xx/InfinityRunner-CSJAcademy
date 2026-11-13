@@ -73,10 +73,11 @@ public static class SpawnMethods
     public static void Recycle(Transform plataform)
     {
         plataform.transform.position = new Vector2(_xOffSet, _yOffSet);
+        Plataform platScript = plataform.GetComponent<Plataform>();
 
-        if (plataform.GetComponent<Plataform>() != null)
+        if (platScript != null && platScript.SpawnGroundEnemies != null)
         {
-            plataform.GetComponent<Plataform>().SpawnGroundEnemies.SpawnEnemyes();
+            platScript.SpawnGroundEnemies.SpawnEnemyes();
         }
 
         _xOffSet += Distance;

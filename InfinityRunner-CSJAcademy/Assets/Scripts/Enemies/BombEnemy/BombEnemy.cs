@@ -14,7 +14,15 @@ public class BombEnemy : MonoBehaviour
         if (_thowCount >= _thowTime)
         {
             Instantiate(_bombPrefab, _firePoint.position, _firePoint.rotation);
-            _thowCount = 0.0f; 
+            _thowCount = 0.0f;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Lethal"))
+        {
+            Destroy(gameObject);
         }
     }
 }
