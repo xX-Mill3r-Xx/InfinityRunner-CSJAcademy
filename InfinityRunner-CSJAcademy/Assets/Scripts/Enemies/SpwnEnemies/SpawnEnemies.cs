@@ -3,11 +3,13 @@ using UnityEngine;
 
 public class SpawnEnemies : MonoBehaviour
 {
+    #region Properties
     [Header("Configurações")]
     [SerializeField] private List<GameObject> _enimiesList = new List<GameObject>();
     [SerializeField] private float _spawnTime;
 
     private float _timerCount;
+    #endregion
 
     void Start()
     {
